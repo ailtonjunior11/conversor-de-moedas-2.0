@@ -1,0 +1,134 @@
+/* root - variables */
+:root {
+  --color-yellow: #fec900;
+  --color-withe: #ffffff;
+  --color-black: #000000;
+  --color-gray: #949494;
+  --color-gray-light: #f4f4f4;
+  --color-gray-darck: #555555;
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  outline: none;
+}
+
+/* styles */
+body {
+  background-color: var(--color-black);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px auto;
+}
+
+.logo-img {
+  height: 100px;
+}
+
+main {
+  width: 375px;
+  margin: 0 auto 30px;
+  padding: 40px 24px 23px;
+  border-radius: 10px;
+  background-color: var(--color-gray-light);
+}
+
+label {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+select,
+input {
+  font-size: 15px;
+  font-weight: 700;
+  width: 100%;
+  height: 45px;
+  margin: 5px 0 24px;
+  padding-left: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: solid 1px #00000025;
+  color: var(--color-gray-darck);
+  background-color: var(--color-withe);
+}
+
+input {
+  cursor: text;
+  margin-bottom: 0;
+}
+
+input::placeholder {
+  color: var(--color-gray);
+}
+
+button {
+  width: 100%;
+  height: 45px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 25px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: var(--color-gray-darck);
+  background-color: var(--color-yellow);
+  box-shadow: 0 4px 4px #00000031;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  opacity: 0.6;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 36px;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: solid 1px var(--color-yellow);
+  background-color: var(--color-withe);
+}
+
+.currency-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrow-img {
+  height: 50px;
+  width: 35px;
+}
+
+.currency {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.currency-value-to-convert,
+.currency-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-gray-darck);
+}
+
+.currency-box img {
+  height: 52px;
+}
