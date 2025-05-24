@@ -28,16 +28,16 @@ body {
 }
 
 main {
-  width: 375px;
+  width: 410px;
   margin: 0 auto 30px;
-  padding: 40px 24px 23px;
+  padding: 40px 24px;
   border-radius: 10px;
   background-color: var(--color-primary);
 }
 
 label {
   font-size: 15px;
-  color: var(--color-gray);
+  color: var(--color-gray-darck);
 }
 
 select,
@@ -126,4 +126,14 @@ section {
 
 .currency-box img {
   height: 55px;
+}
+
+@media (max-width: 425px) {
+  main {
+    width: 100%;
+  }
+
+  .logo-img {
+    width: 100%;
+  }
 }
