@@ -18,101 +18,58 @@ function convertValues() {
   // Aqui criamos uma variável para mapear o paragrafo que vai receber o valor convertido
   const CurrencyValueConverted = document.querySelector(".currency-value");
 
-  const dolarToDay = 5.2;
-  const realToDay = 1;
-  const euroToDay = 6.2;
-  const libraToDay = 7.2;
-  const bitcoinDay = 637.455;
-  const francoSuicoToDay = 6.9;
+  // Aqui criamos um objeto com as variáveis que guardam as taxas de câmbio de cada moeda
+  const exchangeRates = {
+    dolar: 5.2,
+    real: 1,
+    euro: 6.2,
+    libra: 7.2,
+    bitcoin: 637.455,
+    francosuico: 6.9,
+  };
 
-  // Aqui fazemos uma verificação do segundo select, para saber qual moeda está sendo selecionada, e depois fazemos a conversão
-  if (currencySelect.value == "dolar") {
-    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(inputCurrencyValue / dolarToDay);
-  }
+  // Aqui criamos uma variável para guardar a moeda de origem
+  const sourceCurrency = currencySelectToConvert.value;
+  // Aqui criamos uma variável para guardar a moeda de destino
+  const destinationCurrency = currencySelect.value;
 
-  if (currencySelect.value == "real") {
-    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(inputCurrencyValue / realToDay);
-  }
+  // Aqui criamos uma variável para guardar a taxa de câmbio da moeda de origem
+  const originationFees = exchangeRates[sourceCurrency];
+  // Aqui criamos uma variável para guardar a taxa de câmbio da moeda de destino
+  const destinationFees = exchangeRates[destinationCurrency];
 
-  if (currencySelect.value == "euro") {
-    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-      style: "currency",
-      currency: "EUR",
-    }).format(inputCurrencyValue / euroToDay);
-  }
+  // Aqui criamos uma variável para guardar o valor do input multiplicado pela taxa de câmbio da moeda de origem e dividido pela taxa de câmbio da moeda de destino
+  const valueConverted =
+    (inputCurrencyValue * originationFees) / destinationFees; // Exemplo: 100 * 5.2 / 6.2 = 83.87
 
-  if (currencySelect.value == "libra") {
-    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
-      style: "currency",
-      currency: "GBP",
-    }).format(inputCurrencyValue / libraToDay);
-  }
+  // Aqui formatamos o valor que será convertido
+  CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: getCurrencyCode(sourceCurrency),
+  }).format(inputCurrencyValue);
 
-  if (currencySelect.value == "bitcoin") {
-    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("es-SV", {
-      style: "currency",
-      currency: "BTC",
-    }).format(inputCurrencyValue / bitcoinDay);
-  }
-
-  if (currencySelect.value == "francosuico") {
-    CurrencyValueConverted.innerHTML = new Intl.NumberFormat("de-CH", {
-      style: "currency",
-      currency: "CHF",
-    }).format(inputCurrencyValue / francoSuicoToDay);
-  }
-
-  // Aqui fazemos uma verificação do primeiro select, para saber qual moeda está sendo selecionada, e depois fazemos a conversão
-  if (currencySelectToConvert.value == "real") {
-    CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(inputCurrencyValue);
-  } // Aqui estamos mudando o valor do input para o formato de moeda brasileira
-
-  if (currencySelectToConvert.value == "dolar") {
-    CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(inputCurrencyValue);
-  } // Aqui estamos mudando o valor do input para o formato de moeda americana
-
-  if (currencySelectToConvert.value == "libra") {
-    CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
-      style: "currency",
-      currency: "GBP",
-    }).format(inputCurrencyValue);
-  } // Aqui estamos mudando o valor do input para o formato de moeda britânica
-
-  if (currencySelectToConvert.value == "euro") {
-    CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
-      style: "currency",
-      currency: "EUR",
-    }).format(inputCurrencyValue);
-  } // Aqui estamos mudando o valor do input para o formato de moeda europeia
-
-  if (currencySelectToConvert.value == "bitcoin") {
-    CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("es-SV", {
-      style: "currency",
-      currency: "BTC",
-    }).format(inputCurrencyValue);
-  }
-
-  if (currencySelectToConvert.value == "francosuico") {
-    CurrencyValueToConvert.innerHTML = new Intl.NumberFormat("de-CH", {
-      style: "currency",
-      currency: "CHF",
-    }).format(inputCurrencyValue);
-  }
+  // Aqui formatamos o valor convertido
+  CurrencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: getCurrencyCode(destinationCurrency),
+  }).format(valueConverted);
 }
 
-// Aqui criamos uma função para mudar o nome e a imagem da moeda selecionada
+// Aqui criamos uma função auxiliar para pegar o código da moeda
+function getCurrencyCode(moeda) {
+  const currencyCode = {
+    dolar: "USD",
+    real: "BRL",
+    euro: "EUR",
+    libra: "GBP",
+    bitcoin: "BTC",
+    francosuico: "CHF",
+  };
+
+  return currencyCode[moeda]; // Aqui retornamos o codigo da moeda
+}
+
+// Aqui criamos uma função para o select, mudando o nome e a imagem da moeda que será convertida
 function changeCurrency() {
   const currencyName = document.getElementById("currency-name"); // Aqui criamos uma variável para mapear o nome da moeda convertida
   const currencyImage = document.querySelector(".currency-img"); // Aqui criamos uma variável para mapear a imagem da moeda convertida
@@ -151,7 +108,7 @@ function changeCurrency() {
   convertValues(); // Aqui chamamos a função de conversão
 }
 
-// Aqui criamos uma função para mudar o nome e a imagem da moeda selecionada
+// Aqui criamos uma função para o select, mudando o nome e a imagem da moeda a ser convertida
 function changeCurrencyToConvert() {
   const currencyNameToConvert = document.getElementById(
     "currency-name-to-convert" // Aqui criamos uma variável para mapear o nome da moeda convertida
