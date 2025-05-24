@@ -1,11 +1,11 @@
 /* root - variables */
 :root {
-  --color-yellow: #fec900;
   --color-withe: #ffffff;
-  --color-black: #000000;
+  --color-main: #109cd7;
   --color-gray: #949494;
-  --color-gray-light: #f4f4f4;
-  --color-gray-darck: #555555;
+  --color-gray-darck: #333333c4;
+  --color-primary: #b8e7f9;
+  --color-secondary: #e8f7fe;
 }
 
 /* reset */
@@ -19,18 +19,12 @@
 
 /* styles */
 body {
-  background-color: var(--color-black);
-}
-
-.logo {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 20px auto;
+  background-color: var(--color-main);
 }
 
 .logo-img {
-  height: 100px;
+  display: block;
+  margin: 0 auto;
 }
 
 main {
@@ -38,11 +32,11 @@ main {
   margin: 0 auto 30px;
   padding: 40px 24px 23px;
   border-radius: 10px;
-  background-color: var(--color-gray-light);
+  background-color: var(--color-primary);
 }
 
 label {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-gray);
 }
 
@@ -64,6 +58,7 @@ input {
 input {
   cursor: text;
   margin-bottom: 0;
+  font-weight: 400;
 }
 
 input::placeholder {
@@ -79,8 +74,8 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  color: var(--color-gray-darck);
-  background-color: var(--color-yellow);
+  color: var(--color-secondary);
+  background-color: var(--color-main);
   box-shadow: 0 4px 4px #00000031;
 }
 
@@ -99,9 +94,9 @@ section {
   gap: 15px;
   width: 100%;
   margin-top: 36px;
-  padding: 12px 0;
+  padding: 15px 0;
   border-radius: 10px;
-  border: solid 1px var(--color-yellow);
+  border: solid 1px var(--color-main);
   background-color: var(--color-withe);
 }
 
@@ -130,5 +125,5 @@ section {
 }
 
 .currency-box img {
-  height: 52px;
+  height: 55px;
 }
