@@ -128,6 +128,8 @@ section {
   height: 55px;
 }
 
+/* Responsive */
+/* media queries */
 @media (max-width: 425px) {
   main {
     width: 100%;
